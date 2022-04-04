@@ -1,6 +1,6 @@
 # Food Recipe App - Flutter
 
-- Preview video: 
+- Preview video: https://youtu.be/F29PkhEOVmk
 - Support my work: https://www.patreon.com/sangvaleap
 
 - [My Patreon](https://www.patreon.com/sangvaleap)
