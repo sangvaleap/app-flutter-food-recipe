@@ -25,13 +25,13 @@ class _ExplorePageState extends State<ExplorePage> {
           pinned: true,
           snap: true,
           floating: true,
-          title: buildHeader(),
+          title: _buildHeader(),
         ),
         SliverToBoxAdapter(
-          child: buildSearchBlcok(),
+          child: _buildSearch(),
         ),
         SliverToBoxAdapter(
-          child: buildCategory(),
+          child: _buildCategory(),
         ),
         SliverList(
             delegate: SliverChildBuilderDelegate(
@@ -51,7 +51,7 @@ class _ExplorePageState extends State<ExplorePage> {
     );
   }
 
-  Widget buildHeader() {
+  Widget _buildHeader() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: const [
@@ -67,7 +67,7 @@ class _ExplorePageState extends State<ExplorePage> {
     );
   }
 
-  Widget buildSearchBlcok() {
+  Widget _buildSearch() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(15, 10, 15, 15),
       child: Row(
@@ -97,7 +97,7 @@ class _ExplorePageState extends State<ExplorePage> {
   }
 
   int selectedCategoryIndex = 0;
-  Widget buildCategory() {
+  Widget _buildCategory() {
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(15, 5, 7, 20),
       scrollDirection: Axis.horizontal,

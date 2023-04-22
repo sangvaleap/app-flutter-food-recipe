@@ -12,6 +12,7 @@ class IconBox extends StatelessWidget {
       this.padding = 5,
       this.isShadow = true})
       : super(key: key);
+
   final Widget child;
   final Color borderColor;
   final Color bgColor;

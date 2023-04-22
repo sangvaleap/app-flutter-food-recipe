@@ -14,6 +14,7 @@ class FavoriteBox extends StatelessWidget {
       this.size = 18,
       this.padding = 8})
       : super(key: key);
+
   final Color borderColor;
   final Color? bgColor;
   final bool isFavorited;

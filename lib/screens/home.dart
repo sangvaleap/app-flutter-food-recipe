@@ -24,13 +24,13 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: appBarColor,
         elevation: 0,
-        title: buildAppbar(),
+        title: _buildTitle(),
       ),
-      body: buildBody(),
+      body: _buildBody(),
     );
   }
 
-  Widget buildBody() {
+  Widget _buildBody() {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,11 +38,11 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 15,
           ),
-          buildHeader(),
+          _buildHeader(),
           const SizedBox(
             height: 15,
           ),
-          buildCategory(),
+          _buildCategory(),
           const Padding(
             padding: EdgeInsets.all(15),
             child: Text(
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          buildPopular(),
+          _buildPopular(),
           const Padding(
             padding: EdgeInsets.all(15),
             child: Text(
@@ -66,13 +66,13 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          buildRecommend(),
+          _buildRecommend(),
         ],
       ),
     );
   }
 
-  Widget buildAppbar() {
+  Widget _buildTitle() {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildHeader() {
+  Widget _buildHeader() {
     return Padding(
       padding: const EdgeInsets.only(left: 15, right: 15),
       child: Column(
@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   int selectedCategoryIndex = 0;
-  Widget buildCategory() {
+  Widget _buildCategory() {
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(15, 5, 7, 10),
       scrollDirection: Axis.horizontal,
@@ -152,7 +152,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildPopular() {
+  Widget _buildPopular() {
     return SingleChildScrollView(
       padding: const EdgeInsets.only(left: 15),
       scrollDirection: Axis.horizontal,
@@ -169,14 +169,14 @@ class _HomePageState extends State<HomePage> {
                     !populars[index]["is_favorited"];
               });
             },
-            onTap: () {},
+            onTap: null,
           ),
         ),
       )),
     );
   }
 
-  Widget buildRecommend() {
+  Widget _buildRecommend() {
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(15, 0, 0, 15),
       scrollDirection: Axis.horizontal,
@@ -187,7 +187,7 @@ class _HomePageState extends State<HomePage> {
             margin: const EdgeInsets.only(right: 15),
             child: RecommendItem(
               data: recommends[index],
-              onTap: () {},
+              onTap: null,
               onFavoriteTap: () {
                 setState(() {
                   recommends[index]["is_favorited"] =

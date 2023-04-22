@@ -11,6 +11,7 @@ class BottomBarItem extends StatelessWidget {
       this.activeColor = primary,
       this.isActive = false})
       : super(key: key);
+
   final String icon;
   final Color color;
   final Color activeColor;

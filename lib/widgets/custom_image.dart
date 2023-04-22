@@ -18,6 +18,7 @@ class CustomImage extends StatelessWidget {
       this.borderRadius,
       this.isShadow = true})
       : super(key: key);
+
   final String image;
   final double width;
   final double height;
@@ -82,13 +83,14 @@ class _BlankImageWidgetState extends State<BlankImageWidget> {
     return const Padding(
       padding: EdgeInsets.all(0),
       child: Center(
-          child: SizedBox(
-        child: Card(
-          margin: EdgeInsets.zero,
-          clipBehavior: Clip.antiAlias,
-          elevation: 0.0,
+        child: SizedBox(
+          child: Card(
+            margin: EdgeInsets.zero,
+            clipBehavior: Clip.antiAlias,
+            elevation: 0.0,
+          ),
         ),
-      )),
+      ),
     );
   }
 }

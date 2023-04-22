@@ -49,16 +49,7 @@ class RecommendItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    data["name"],
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      color: textColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                  _buildRecipeName(),
                   const SizedBox(
                     height: 5,
                   ),
@@ -69,76 +60,60 @@ class RecommendItem extends StatelessWidget {
                   const SizedBox(
                     height: 25,
                   ),
-                  Row(
-                    children: [
-                      // CustomImage(
-                      //   data["creator"]["image"],
-                      //   width: 25,
-                      //   height: 25,
-                      // ),
-                      // const SizedBox(
-                      //   width: 5,
-                      // ),
-                      // Expanded(
-                      //   child: Column(
-                      //     crossAxisAlignment: CrossAxisAlignment.start,
-                      //     children: [
-                      //       Text(
-                      //         data["creator"]["name"],
-                      //         maxLines: 1,
-                      //         overflow: TextOverflow.ellipsis,
-                      //         style: const TextStyle(
-                      //           color: textColor,
-                      //           fontSize: 12,
-                      //         ),
-                      //       ),
-                      //       Text(
-                      //         data["creator"]["type"],
-                      //         maxLines: 1,
-                      //         overflow: TextOverflow.ellipsis,
-                      //         style: const TextStyle(
-                      //           color: labelColor,
-                      //           fontSize: 10,
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      Container(
-                        padding: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: primary,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.star,
-                              color: textColor,
-                              size: 14,
-                            ),
-                            Text(
-                              data["rate"],
-                              style: const TextStyle(fontSize: 12),
-                            )
-                          ],
-                        ),
-                      ),
-                      const Spacer(),
-                      FavoriteBox(
-                        size: 13,
-                        padding: 5,
-                        isFavorited: data["is_favorited"],
-                        onTap: onFavoriteTap,
-                      ),
-                    ],
-                  ),
+                  _buildRateAndFavorite(),
                 ],
               ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildRecipeName() {
+    return Text(
+      data["name"],
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: const TextStyle(
+        color: textColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+      ),
+    );
+  }
+
+  Widget _buildRateAndFavorite() {
+    return Row(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: primary,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(
+            children: [
+              const Icon(
+                Icons.star,
+                color: textColor,
+                size: 14,
+              ),
+              Text(
+                data["rate"],
+                style: const TextStyle(fontSize: 12),
+              )
+            ],
+          ),
+        ),
+        const Spacer(),
+        FavoriteBox(
+          size: 13,
+          padding: 5,
+          isFavorited: data["is_favorited"],
+          onTap: onFavoriteTap,
+        ),
+      ],
     );
   }
 }

@@ -14,6 +14,7 @@ class PopularItem extends StatelessWidget {
       this.onTap,
       this.onFavoriteTap})
       : super(key: key);
+
   final Map data;
   final double width;
   final double height;
@@ -61,102 +62,118 @@ class PopularItem extends StatelessWidget {
             ),
             Positioned(
               bottom: 0,
-              child: Container(
-                margin: const EdgeInsets.all(8),
-                width: width - 16,
-                height: 80,
-                padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                decoration: BoxDecoration(
-                  color: cardColor,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: shadowColor.withOpacity(0.1),
-                      spreadRadius: 1,
-                      blurRadius: 1,
-                      offset: const Offset(0, 2), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      data["name"],
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                        color: textColor,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: [
-                        CustomImage(
-                          data["creator"]["image"],
-                          width: 25,
-                          height: 25,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                data["creator"]["name"],
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  color: textColor,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              Text(
-                                data["creator"]["type"],
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  color: labelColor,
-                                  fontSize: 10,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            color: primary,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Row(
-                            children: [
-                              const Icon(
-                                Icons.star,
-                                color: textColor,
-                                size: 14,
-                              ),
-                              Text(
-                                data["rate"],
-                                style: const TextStyle(fontSize: 12),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              child: buildPopupCard(),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget buildPopupCard() {
+    return Container(
+      margin: const EdgeInsets.all(8),
+      width: width - 16,
+      height: 80,
+      padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+      decoration: BoxDecoration(
+        color: cardColor,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: shadowColor.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 1,
+            offset: const Offset(0, 2), // changes position of shadow
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            data["name"],
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
+              color: textColor,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              _buildCreatorPhoto(),
+              const SizedBox(
+                width: 5,
+              ),
+              Expanded(
+                child: _buildCreatorInfo(),
+              ),
+              _buildRate(),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCreatorPhoto() {
+    return CustomImage(
+      data["creator"]["image"],
+      width: 25,
+      height: 25,
+    );
+  }
+
+  Widget _buildCreatorInfo() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          data["creator"]["name"],
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+            color: textColor,
+            fontSize: 12,
+          ),
+        ),
+        Text(
+          data["creator"]["type"],
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+            color: labelColor,
+            fontSize: 10,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildRate() {
+    return Container(
+      padding: const EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: primary,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        children: [
+          const Icon(
+            Icons.star,
+            color: textColor,
+            size: 14,
+          ),
+          Text(
+            data["rate"],
+            style: const TextStyle(fontSize: 12),
+          )
+        ],
       ),
     );
   }

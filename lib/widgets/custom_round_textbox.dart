@@ -13,6 +13,7 @@ class CustomRoundTextBox extends StatelessWidget {
       this.boxShadow,
       this.contentPadding})
       : super(key: key);
+
   final String hint;
   final Widget? prefix;
   final Widget? suffix;
@@ -20,6 +21,7 @@ class CustomRoundTextBox extends StatelessWidget {
   final BoxShadow? boxShadow;
   final EdgeInsetsGeometry? contentPadding;
   final TextEditingController? controller;
+
   @override
   Widget build(BuildContext context) {
     BoxShadow _boxShadow = boxShadow ??
@@ -29,6 +31,7 @@ class CustomRoundTextBox extends StatelessWidget {
           blurRadius: 1,
           offset: const Offset(0, 1), // changes position of shadow
         );
+
     return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.only(bottom: 3),
@@ -43,12 +46,16 @@ class CustomRoundTextBox extends StatelessWidget {
         readOnly: readOnly,
         controller: controller,
         decoration: InputDecoration(
-            contentPadding: contentPadding,
-            prefixIcon: prefix,
-            suffixIcon: suffix,
-            border: InputBorder.none,
-            hintText: hint,
-            hintStyle: const TextStyle(color: Colors.grey, fontSize: 15)),
+          contentPadding: contentPadding,
+          prefixIcon: prefix,
+          suffixIcon: suffix,
+          border: InputBorder.none,
+          hintText: hint,
+          hintStyle: const TextStyle(
+            color: Colors.grey,
+            fontSize: 15,
+          ),
+        ),
       ),
     );
   }
